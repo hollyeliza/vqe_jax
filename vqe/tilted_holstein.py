@@ -1,7 +1,6 @@
 # Okay so I can fist convert into Pauli strings
 # Look into a good way to do this 
 
-import jax
 import jax.numpy as jnp
 from jax import grad
 

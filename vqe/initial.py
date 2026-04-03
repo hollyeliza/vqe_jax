@@ -1,4 +1,3 @@
-import jax
 import jax.numpy as jnp
 from jax import grad
 
@@ -22,12 +21,15 @@ def Ry(theta):
         [jnp.sin(theta / 2),  jnp.cos(theta / 2)]
     ])
 
-# Prepare state
+# Prepare state - the state (func of the thetas) equal to initial state multiplied by the operators
 def state(params):
-    theta1, theta2 = params
-    return Ry(theta2) @ Ry(theta1) @ psi0
+    theta1, theta2 = params # params is an array
+    return Ry(theta2) @ Ry(theta1) @ psi0 # the trial state (@ matrix multiplication)
 
-# Energy expectation value
+# Energy expectation value - to calculate the energy we need to apply the Hamiltonian
+# to the state and multiply by this by the conjugate which turn the ket |ψ⟩ into bra ⟨ψ|
+# and allows us to calculate the expectation value ⟨ψ|H|ψ⟩
+
 def energy(params):
     psi = state(params)
     return jnp.real(jnp.conj(psi) @ (H @ psi))
@@ -39,9 +41,10 @@ grad_energy = grad(energy)
 params = jnp.array([0.1, 0.2])
 lr = 0.1
 
-for i in range(50):
+for i in range(70):
     g = grad_energy(params)
     params = params - lr * g
+
 
     if i % 10 == 0:
         print(f"Step {i}, Energy = {energy(params):.6f}, params = {params}")
