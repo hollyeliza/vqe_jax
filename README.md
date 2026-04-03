@@ -1,6 +1,6 @@
 # vqe_jax
 
-Nikita Astrakhantsev advice at SimQuDyn was to learn how to use JAX. He may be biased but I am taking his advice by exploring JAX through a VQE implementation.
+Nikita Astrakhantsev's advice at SimQuDyn was to learn how to use JAX. He may be biased but I am taking his advice by exploring JAX through a VQE implementation.
 
 ## JAX vs NumPy
 
@@ -12,7 +12,7 @@ JAX extends this by introducing a different way of thinking about computation. A
 
 This allows JAX to automatically differentiate functions, apply transformations, and compile code using just-in-time (JIT) compilation. The result is efficient low-level code that can run on accelerated hardware like GPUs and TPUs.
 
-## Immutable arrays
+## Immutable Arrays
 
 JAX uses immutable arrays and numpy doesn't. JAX does this because it needs the code to behave like a clean mathematical function rather than a sequence of state changes. If values can be modified in place, it becomes harde to track what depends on what, which breaks things like automatic differentiation and makes optimisation and compilation unreliable.
 
