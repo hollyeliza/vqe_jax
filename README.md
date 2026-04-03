@@ -1,3 +1,3 @@
 # vqe_jax
 
-Learning the ways of JAX using the VQE
+Exploring JAX through a VQE implementation
